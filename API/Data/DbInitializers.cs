@@ -1,22 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using API.Entities;
 
-namespace API.Data
-{
-    public class DbInitializers
-    {
-        public static void Initialize(SourceContext context)
-        {
-            if(context.Products.Any()) return;
+namespace API.Data;
 
-            var products = new List<Product>
+public static class DbInitializer
+{
+    public static void Initialize(StoreContext context)
+    {
+        if (context.Products.Any()) return;
+
+        var products = new List<Product>
             {
                 new Product
                 {
-                   		
                     Name = "Angular Speedster Board 2000",
                     Description =
                         "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
@@ -175,7 +170,7 @@ namespace API.Data
                         "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                     Price = 18999,
                     PictureUrl = "/images/products/boot-core2.png",
-                    Brand = "NetCore",
+                    Brand = "Redis",
                     Type = "Boots",
                     QuantityInStock = 100
                 },
@@ -211,14 +206,13 @@ namespace API.Data
                     Type = "Boots",
                     QuantityInStock = 100
                 },
-                
             };
-            // context.AddRange(products);
-            foreach(var product in products)
-            {
-                context.Products.Add(product);
-            }
-            context.SaveChanges();
+
+        foreach (var product in products)
+        {
+            context.Products.Add(product);
         }
+
+        context.SaveChanges();
     }
 }

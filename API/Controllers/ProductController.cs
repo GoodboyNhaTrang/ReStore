@@ -13,9 +13,9 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class ProductController : ControllerBase
     {
-        private readonly SourceContext _context;
+        private readonly StoreContext _context;
        
-        public ProductController(SourceContext context)
+        public ProductController(StoreContext context)
         {
             _context = context;
        
@@ -26,7 +26,7 @@ namespace API.Controllers
         public async Task<ActionResult<List<Product>>> GetProducts()
         {
              return await _context.Products.ToListAsync();
-            // return Ok(products);
+           
         }  
 
         [HttpGet("{id}")]
