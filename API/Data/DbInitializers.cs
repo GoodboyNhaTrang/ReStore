@@ -12,7 +12,7 @@ public static class DbInitializer
             {
                 new Product
                 {
-                    Name = "Angular Speedster Board 2000",
+                    Name = "Angular Speedster Board ",
                     Description =
                         "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
                     Price = 20000,
@@ -23,7 +23,7 @@ public static class DbInitializer
                 },
                 new Product
                 {
-                    Name = "Green Angular Board 3000",
+                    Name = "Green Angular Board ",
                     Description = "Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.",
                     Price = 15000,
                     PictureUrl = "/images/products/sb-ang2.png",
@@ -33,7 +33,7 @@ public static class DbInitializer
                 },
                 new Product
                 {
-                    Name = "Core Board Speed Rush 3",
+                    Name = "Core Board Speed Rush ",
                     Description =
                         "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
                     Price = 18000,

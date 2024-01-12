@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+
 import { Product } from "../../models/product";
 import ProductList from "./ProductList";
 import { useState, useEffect } from "react";
@@ -8,8 +8,8 @@ interface Props {
     addProduct : () => void;
 }
 
-export default function Catelog ()
-{ const [products, setProducts] = useState<Product[]>([]);
+export default function Catalog ()
+{ const [products, setProduct] = useState<Product[]>([]);
 
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function Catelog ()
       )
     .then(data =>{
     
-      setProducts(data);
+      setProduct(data);
     })
   
     .catch(error => console.error('lỗi rồi:', error)); // Bắt lỗi fetch
