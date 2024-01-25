@@ -1,34 +1,30 @@
+import { useState, useEffect } from 'react';
 
-import { Product } from "../../models/product";
-import ProductList from "./ProductList";
-import { useState, useEffect } from "react";
-
-interface Props {
-    products : Product[];
-    addProduct : () => void;
-}
-
-export default function Catalog ()
-{ const [products, setProduct] = useState<Product[]>([]);
+import ProductList from './ProductList';
+import agent from '../../app/api/agent';
+import { Product } from '../../models/product';
+import LoadingComponent from '../../app/layout/LoadingComponent';
 
 
-  useEffect(() => {
-    fetch('http://localhost:5000/api/Product')
-    .then(response => 
-        response.json()
-      )
-    .then(data =>{
-    
-      setProduct(data);
-    })
-  
-    .catch(error => console.error('lỗi rồi:', error)); // Bắt lỗi fetch
-  }, []);
-  
+export default function Catalog() {
+    const [loading, setLoading] = useState(true);
+    const [products, setProducts] = useState<Product[]>([]);
+
+    useEffect(() => {
+        agent.Catalog.list()
+            .then(products => {
+                setProducts(products)
+            })
+            .catch(error => console.log(error))
+            .finally(() => setLoading(false));
+    }, [])
+
+
+    if (loading) return <LoadingComponent message='Loading products...' />
+
     return (
         <>
-      <ProductList products = {products}/>
-      
-      </>
+            <ProductList products={products} />
+        </>
     )
 }
